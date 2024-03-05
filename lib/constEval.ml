@@ -164,7 +164,7 @@ class const_eval_visitor ctx =
           | _ -> ())
       | Cast (t, e) -> (
           match t with
-          | Int -> (
+          | Int | LongInt -> (
               match e.node with
               | ConstInt _ -> const_replace expr e.node
               | ConstFloat f -> const_replace expr (ConstInt (Int.of_float f))
