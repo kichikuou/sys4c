@@ -702,10 +702,12 @@ class jaf_compiler ain =
           self#compile_expression e;
           match (src_t, dst_t) with
           | Int, Int -> ()
-          | Int, Bool -> self#write_instruction0 ITOB
-          | Int, Float -> self#write_instruction0 ITOF
+          | LongInt, LongInt -> ()
+          | (Int | LongInt), Bool -> self#write_instruction0 ITOB
+          | (Int | LongInt), Float -> self#write_instruction0 ITOF
           | Int, LongInt -> self#write_instruction0 ITOLI
-          | Int, String -> self#write_instruction0 I_STRING
+          | LongInt, Int -> ()
+          | (Int | LongInt), String -> self#write_instruction0 I_STRING
           | Bool, (Bool | Int) -> ()
           | Float, Float -> ()
           | Float, Int -> self#write_instruction0 FTOI
@@ -714,7 +716,11 @@ class jaf_compiler ain =
               self#write_instruction0 FTOS
           | String, String -> ()
           | String, Int -> self#write_instruction0 STOI
-          | _ -> compiler_bug "invalid cast" (Some (ASTExpression expr)))
+          | _ ->
+              compiler_bug
+                (Printf.sprintf "invalid cast from %s to %s"
+                   (jaf_type_to_string src_t) (jaf_type_to_string dst_t))
+                (Some (ASTExpression expr)))
       | Subscript (obj, index) -> (
           self#compile_lvalue obj;
           self#compile_expression index;
