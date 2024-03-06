@@ -81,6 +81,7 @@ int main()
 	f = 2.0; i = f; assert(i == 2);
 	i = 2; f = 2.0; assert(f == i);
 	i = 2; l = 3; assert(i + l == 5);
+	l = 2; i = 3; assert(l < 3);
 	b = 0; i = 2; assert(b + i == 2);
 	i = 2; b = i; assert(1 == b);
 

@@ -561,10 +561,10 @@ class jaf_compiler ain =
           | Int, Times -> self#write_instruction0 MUL
           | Int, Divide -> self#write_instruction0 DIV
           | Int, Modulo -> self#write_instruction0 MOD
-          | Int, LT -> self#write_instruction0 LT
-          | Int, GT -> self#write_instruction0 GT
-          | Int, LTE -> self#write_instruction0 LTE
-          | Int, GTE -> self#write_instruction0 GTE
+          | (Int | LongInt), LT -> self#write_instruction0 LT
+          | (Int | LongInt), GT -> self#write_instruction0 GT
+          | (Int | LongInt), LTE -> self#write_instruction0 LTE
+          | (Int | LongInt), GTE -> self#write_instruction0 GTE
           | Int, BitOr -> self#write_instruction0 OR
           | Int, BitXor -> self#write_instruction0 XOR
           | Int, BitAnd -> self#write_instruction0 AND
