@@ -18,5 +18,6 @@
    vector
    dune
    menhir
+   yojson
    (ppx_expect :with-test)
    (ocamlformat (= 0.27.0))))

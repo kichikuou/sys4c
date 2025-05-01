@@ -96,3 +96,7 @@ let collect_sources pje =
 let ain_path pje =
   let open Stdlib.Filename in
   concat (dirname pje.pje_path) (concat pje.output_dir pje.code_name)
+
+let debug_info_path pje =
+  let open Stdlib.Filename in
+  concat (dirname pje.pje_path) "debug_info.json"

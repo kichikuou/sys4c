@@ -1,6 +1,6 @@
 (library
  (name Sys4cLib)
- (libraries base stdio camlzip vector))
+ (libraries base stdio camlzip vector yojson))
 
 (ocamllex lexer pjeLexer)
 

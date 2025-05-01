@@ -82,7 +82,8 @@ let do_build pje_file input_encoding =
       in
       let sources = Pje.collect_sources pje in
       Compiler.compile ctx sources read_file;
-      Ain.write_file ctx.ain (Pje.ain_path pje))
+      Ain.write_file ctx.ain (Pje.ain_path pje);
+      DebugInfo.write_to_file ctx.debug_info (Pje.debug_info_path pje))
     (fun file -> Hashtbl.find ctx.files file)
 
 let cmd_compile_jaf =

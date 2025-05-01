@@ -330,6 +330,7 @@ type library = { hll_name : string; functions : (string, fundecl) Hashtbl.t }
 type context = {
   files : (string, string) Hashtbl.t;
   ain : Ain.t;
+  debug_info : DebugInfo.t;
   globals : (string, variable) Hashtbl.t;
   structs : (string, jaf_struct) Hashtbl.t;
   functions : (string, fundecl) Hashtbl.t;
@@ -342,6 +343,7 @@ let context_from_ain ain =
   {
     files = Hashtbl.create (module String);
     ain;
+    debug_info = DebugInfo.create ();
     globals = Hashtbl.create (module String);
     structs = Hashtbl.create (module String);
     functions = Hashtbl.create (module String);
